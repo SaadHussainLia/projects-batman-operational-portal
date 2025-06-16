@@ -15,7 +15,6 @@ You will create a full-stack application with:
 ## Features
 
 ### Authentication
-
 - User Registration
 - User Login
 - Password Hashing
@@ -23,13 +22,11 @@ You will create a full-stack application with:
 - Location stored in database
 
 ### Incident Reporting
-
 - Report Joker sightings, tech thefts, etc.
 - Fields: `title`, `priority`, `location`, `details`
 - Assign incidents to users (like Batman or Nightwing)
 
 ### Dashboard
-
 - Logged-in users can:
 - View active incidents
 - Filter by status, date, or priority
@@ -38,12 +35,10 @@ You will create a full-stack application with:
 ## REST API Endpoints
 
 ### Authentication
-
 - `POST /api/v1/register`
 - `POST /api/v1/login`
 
 ### Incidents
-
 - `GET /api/v1/incidents` -> List all
 - `GET /api/v1/incidents/<id>` -> Get single incident
 - `POST /api/v1/incidents` -> Create new incident
@@ -51,11 +46,10 @@ You will create a full-stack application with:
 - `DELETE /api/v1/incidents/<id>` -> Delete incident
 
 ### Third-Party API Integration
-
 - Pull real-time weather data for Gotham using the [OpenWeather API](https://openweathermap.org/api)
 - Show current Gotham weather on the dashboard
 - Cache weather results upto 1 hour to reduce API calls
-- Pull location of user when they first register using the [IpAPI](https://ipapi.co)
+- Pull location of user when they first register using the [IpAPI]( https://ipapi.co)
 - Store the location (ipaddress, country, city) of each user in the database
 
 ## How to Use API in Postman
@@ -64,18 +58,15 @@ Each API request that modifies data (POST, PUT, DELETE) requires an **Authorizat
 
 ---
 
-### 1. Register User
-
+### 1. Register User  
 **POST** `/api/v1/register`  
 **Body (JSON)**:
-
 ```json
 {
   "Username": "batman",
   "Password": "darkknight"
 }
 ```
-
 **Expected Result:**  
 Returns success message, saves user's IP and location from [ipapi.co](https://ipapi.co) into the database.
 
@@ -86,24 +77,19 @@ Returns success message, saves user's IP and location from [ipapi.co](https://ip
   "ApiResult": ""
 }
 ```
-
 ---
 
-### 2. Login
-
+### 2. Login  
 **POST** `/api/v1/login`  
 **Body (JSON)**:
-
 ```json
 {
   "Username": "batman",
   "Password": "darkknight"
 }
 ```
-
 **Expected Result:**  
 Returns an authentication token like:
-
 ```json
 {
   "Token": "eyJhbGciOi..."
@@ -112,17 +98,13 @@ Returns an authentication token like:
 
 ---
 
-### 3. Create an Incident Report
-
+### 3. Create an Incident Report  
 **POST** `/api/v1/incidents`  
 **Headers:**
-
 ```
 Authorization: Bearer <your_token_here>
 ```
-
 **Body (JSON):**
-
 ```json
 {
   "Title": "Joker sighting",
@@ -131,7 +113,6 @@ Authorization: Bearer <your_token_here>
   "Location": "Gotham East"
 }
 ```
-
 **Expected Result:**  
 Creates a new incident record and assigns it to dashboard.
 
@@ -142,18 +123,14 @@ Creates a new incident record and assigns it to dashboard.
   "ApiResult": ""
 }
 ```
-
 ---
 
-### 4. View All Incidents
-
+### 4. View All Incidents  
 **GET** `/api/v1/incidents`  
 **Headers:**
-
 ```
 Authorization: Bearer <your_token_here>
 ```
-
 **Expected Result:**  
 Returns all incident reports accessible to the user.
 
